@@ -5,8 +5,18 @@ const morgan = require('morgan');
 
 const app = express();
 app.use(morgan('tiny'));
+app.set('view engine', 'vash');
 app.get('/', (req, res) => {
-  res.send('hello');
+  res.render('index', { title: 'hello + vash' });
+});
+
+
+app.get('/api/users', (req, res) => {
+  res.send({
+    name: 'Dimitrios',
+    isVadid: true,
+    group: 'Admin',
+  });
 });
 
 app.listen(3000, () => {
