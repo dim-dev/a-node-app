@@ -1,9 +1,12 @@
-<!doctype html>
-<html>
-<head>
-<title>@model.title</title>
-</head>
-<body>
-<div>@model.title</div>
-</body>
-</html>
+@html.extend('layout', function(model) {
+    @html.block('body', function(model) {
+        <h1>@model.title</h1>
+        @if(model.error) {
+            <p>An error occurred: @model.error</p>
+        }
+        
+        @model.categories.forEach( (category) => {
+            <div><span>@(category.notes ? category.notes.length : 0) </span><a href='#'>@category.name</a></div>
+        })
+    })
+})

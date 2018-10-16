@@ -2,14 +2,12 @@ const express = require('express');
 const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
+const controllers = require('./controllers');
 
 const app = express();
 app.use(morgan('tiny'));
 app.set('view engine', 'vash');
-app.get('/', (req, res) => {
-  res.render('index', { title: 'hello + vash' });
-});
-
+controllers.init(app);
 
 app.get('/api/users', (req, res) => {
   res.send({
