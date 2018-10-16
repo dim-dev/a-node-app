@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>@model.title</title>
+<link rel="stylesheet" href="/css/site.css"/>
 </head>
 <body>
 <div>@html.block('body')</div>
